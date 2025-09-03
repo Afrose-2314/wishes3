@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teachers' Day Wishes — Coding Club</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* INTRO ENVELOPE + POSTER */
+    .intro-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: inherit;
+      z-index: 9999;
+    }
+    .envelope {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      overflow: hidden;
+      animation: pop 1s ease forwards;
+    }
+    .envelope:before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: #2a5298;
+      transform-origin: bottom;
+      animation: flap 2s ease forwards;
+    }
+    @keyframes flap {
+      0% { transform: rotateX(0deg); }
+      100% { transform: rotateX(180deg); }
+    }
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .poster {
+      opacity: 0;
+      width: 100%;
+      height: auto;
+      display: block;
+      animation: fadeIn 2s ease forwards 2s;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    /* Hide main app until intro finishes */
+    .app-container { display: none; }
+  </style>
+</head>
+<body class="main-body">
+
+  <!-- Glitter + animated bg -->
+  <canvas id="glitter"></canvas>
+  <div class="grad-layer"></div>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <canvas id="confetti"></canvas>
+
+  <!-- Intro Envelope -->
+  <div class="intro-screen" id="intro">
+    <div class="envelope">
+      <img src="poster.jpg" alt="Teachers Day Poster" class="poster" />
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div class="app-container" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="logo.jpg" alt="College Logo" />
+        <div class="brand-text">
+          <h1>Prince Shri Venkateswara Arts & Science College</h1>
+          <p>Coding Club — BCA Dept</p>
+        </div>
+      </div>
+      <button class="btn ghost" id="logoutBtn" type="button">Logout</button>
+    </header>
+
+    <main class="card">
+      <h2>🌸 Teachers' Day Wishes 🌸</h2>
+      <p class="sub">Enter your name and create a beautiful memory.</p>
+
+      <input id="teacherName" class="input" type="text" placeholder="Type your teacher's name…" maxlength="40" />
+
+      <div class="actions">
+        <button id="createBtn" class="btn primary">✨ Create Wish</button>
+        <button id="resetBtn" class="btn danger">🔁 Reset</button>
+      </div>
+
+      <!-- Wish Preview Modal -->
+      <div id="preview" class="preview hidden" role="dialog" aria-modal="true" aria-labelledby="wishTitle">
+        <div class="preview-header">
+          <h3 id="wishTitle">🎁 Your Wish</h3>
+          <div class="burst">🎉</div>
+        </div>
+
+        <div id="wishBody" class="wish-body"></div>
+
+        <div class="preview-actions">
+          <button id="closeBtn" class="btn ghost">Close ✖</button>
+        </div>
+      </div>
+
+      <p class="tip">📸 Tip: Take a screenshot of your wish and share it with your teachers!</p>
+    </main>
+
+    <footer class="footer">
+      Made with ❤️ by <strong>Coding Club — BCA Dept</strong>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Hide intro after 5 seconds, show main app
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }, 5000);
+  </script>
+</body>
+</html>

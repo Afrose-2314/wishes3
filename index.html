@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +19,7 @@
       font-family: "Poppins", sans-serif;
     }
 
-    /* Envelope */
+    /* Envelope container */
     .envelope {
       width: 200px;
       height: 120px;
@@ -42,7 +44,7 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* Poster */
+    /* Poster style */
     .poster {
       position: absolute;
       bottom: -100%;
@@ -52,7 +54,7 @@
       justify-content: center;
       align-items: center;
       animation: slideUp 3s forwards;
-      animation-delay: 2s;
+      animation-delay: 2s; /* Envelope disappear ku apram start */
     }
 
     .poster img {
@@ -66,16 +68,6 @@
       from { bottom: -100%; }
       to { bottom: 0; }
     }
-
-    /* Prince Logo opposite side */
-    .logo-right {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 80px; /* size adjust pannalaam */
-      height: auto;
-      z-index: 10;
-    }
   </style>
 </head>
 <body>
@@ -86,15 +78,13 @@
   <!-- Poster -->
   <div class="poster">
     <img src="poster.jpg" alt="Teachers' Day Poster">
-    <!-- Prince Logo opposite side -->
-    <img src="prince.jpg" alt="Prince Logo" class="logo-right">
   </div>
 
   <script>
-    // 7 sec ku apram redirect
+    // 5 sec ku apram wishes content ku redirect
     setTimeout(() => {
       window.location.href = "https://afrose-2314.github.io/wishes2/";
-    }, 7000);
+    }, 7000); // 7 sec delay (2 sec envelope + 3 sec slide + 2 sec view)
   </script>
 </body>
 </html>
